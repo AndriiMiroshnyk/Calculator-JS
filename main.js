@@ -39,7 +39,7 @@ function cube() {
     screen.textContent = firstOperand;
 }
 
-function exp() {
+function exp_power() {
     firstOperand = Math.exp(firstOperand);
     screen.textContent = firstOperand;
 }
@@ -65,12 +65,76 @@ function cubic_root() {
 }
 
 function ln() {
-    firstOperand = Math.log(firstOperand);
-    screen.textContent = firstOperand;
+    if (firstOperand === '') screen.textContent = 'Error';
+    else {
+        firstOperand = Math.log(firstOperand);
+        screen.textContent = firstOperand;
+    }
 }
 
 function log_10() {
-    firstOperand = Math.log10(firstOperand);
+    if (firstOperand === '') screen.textContent = 'Error';
+    else {
+        firstOperand = Math.log10(firstOperand);
+        screen.textContent = firstOperand;
+    } 
+}
+
+function factorial(n) {
+    if (n === 0) {
+        return 1;
+    }
+    else {
+        return n * factorial(n - 1);
+    }
+}
+
+function toDegrees(angle) {
+    return (Math.PI / 180) * angle;
+}
+
+function sin() {
+    firstOperand = Math.sin(toDegrees(firstOperand));
+    screen.textContent = firstOperand;
+}
+
+function cos() {
+    firstOperand = Math.cos(toDegrees(firstOperand));
+    screen.textContent = firstOperand;
+}
+
+function tan() {
+    firstOperand = Math.tan(toDegrees(firstOperand));
+    screen.textContent = firstOperand;
+}
+
+function exp() {
+    firstOperand = Math.E;
+    screen.textContent = firstOperand;
+}
+
+function sinh() {
+    firstOperand = Math.sinh(firstOperand);
+    screen.textContent = firstOperand;
+}
+
+function cosh() {
+    firstOperand = Math.cosh(firstOperand);
+    screen.textContent = firstOperand;
+}
+
+function tanh() {
+    firstOperand = Math.tanh(firstOperand);
+    screen.textContent = firstOperand;
+}
+
+function pi() {
+    firstOperand = Math.PI;
+    screen.textContent = firstOperand;
+}
+
+function rand() {
+    firstOperand = Math.random();
     screen.textContent = firstOperand;
 }
 
@@ -78,13 +142,22 @@ document.querySelector('.all-clear').addEventListener('click', allClear);
 document.querySelector('.percent').addEventListener('click', percent);
 document.querySelector('.square-num').addEventListener('click', square);
 document.querySelector('.cube-num').addEventListener('click', cube);
-document.querySelector('.exp-power').addEventListener('click', exp);
+document.querySelector('.exp-power').addEventListener('click', exp_power);
 document.querySelector('.ten-power-x').addEventListener('click', ten_power_x);
 document.querySelector('.mult-inverse').addEventListener('click', mult_inverse);
 document.querySelector('.square-root').addEventListener('click', square_root);
 document.querySelector('.cubic-root').addEventListener('click', cubic_root);
 document.querySelector('.ln').addEventListener('click', ln);
 document.querySelector('.log-10').addEventListener('click', log_10);
+document.querySelector('.sin').addEventListener('click', sin);
+document.querySelector('.cos').addEventListener('click', cos);
+document.querySelector('.tan').addEventListener('click', tan);
+document.querySelector('.exp').addEventListener('click', exp);
+document.querySelector('.sinh').addEventListener('click', sinh);
+document.querySelector('.cosh').addEventListener('click', cosh);
+document.querySelector('.tanh').addEventListener('click', tanh);
+document.querySelector('.pi').addEventListener('click', pi);
+document.querySelector('.rand').addEventListener('click', rand);
 document.querySelector('.calc__buttons').addEventListener('click', (event) => {
     if (!event.target.classList.contains('btn')) return;
 
@@ -166,5 +239,9 @@ document.querySelector('.calc__buttons').addEventListener('click', (event) => {
             console.log("Second: " + secondOperand);
             screen.textContent = secondOperand;
         }
+    }
+    if (key === 'x!') {
+        firstOperand = factorial(firstOperand);
+        screen.textContent = firstOperand;
     }
 })
